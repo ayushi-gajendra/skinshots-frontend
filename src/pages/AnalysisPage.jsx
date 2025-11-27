@@ -13,7 +13,8 @@ export default function AnalysisPage(){
     const [prediction, setPrediction] = useState(null);
     const [loading, setLoading] = useState(false);
     const [analysisTaken, setAnalysisTaken] = useState(false);
-    
+
+    const API = process.env.REACT_APP_API_URL;
 
     const handleButtonClick = () => {
         fileInputRef.current.click();
@@ -50,7 +51,7 @@ export default function AnalysisPage(){
             setLoading(true);
             const formData = new FormData();
             formData.append("image", file);
-            const res = await fetch("http://127.0.0.1:5000/api/skin-analysis/",{
+            const res = await fetch(`${API}/api/skin-analysis/`,{
                 method: "POST",
                 body: formData,
             });
