@@ -17,6 +17,8 @@ export default function ProductFinderPage(){
     const navigate = useNavigate();
     const {addToCart} = useCart();
 
+    // Backend Base URL
+    const API = process.env.REACT_APP_API_URL;
 
     const questions = [
         { key: "gender", question: "What is your gender?", options: ["Male", "Female", "Prefer not to answer"] },
@@ -52,7 +54,7 @@ export default function ProductFinderPage(){
     const fetchPersonalisedProducts = async () => {
         setLoading(true);
         try{
-            const res = await fetch("http://127.0.0.1:5000/api/personalised-products/",{
+            const res = await fetch(`${API}/api/personalised-products/`,{
                 method: "POST",
                 headers: { "Content-Type": "application/json"},
                 body: JSON.stringify({answers})
