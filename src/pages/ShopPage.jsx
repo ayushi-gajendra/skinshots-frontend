@@ -16,7 +16,7 @@ export default function ShopPage(){
     const [activeCategory, setActiveCategory] = useState("Cleanser");
 
     // Backend Base URL
-    const API_BASE = import.meta.env.REACT_API_URL;
+    const API = process.env.REACT_APP_API_URL;
   
     // If we are navigating from home page
     useEffect(()=>{
@@ -33,7 +33,7 @@ export default function ShopPage(){
 
     const fetchProducts = async() => {
             try{
-                const res = await fetch(`${API_BASE}/api/products`);
+                const res = await fetch(`${API}/api/products`);
                 const data = await res.json();
                 setProducts(data);
             } catch (error){
