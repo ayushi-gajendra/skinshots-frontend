@@ -14,6 +14,9 @@ export default function ShopPage(){
     const navigate = useNavigate();
     const [products, setProducts] = useState([]);
     const [activeCategory, setActiveCategory] = useState("Cleanser");
+
+    // Backend Base URL
+    const API_BASE = import.meta.env.REACT_API_URL;
   
     // If we are navigating from home page
     useEffect(()=>{
@@ -30,7 +33,7 @@ export default function ShopPage(){
 
     const fetchProducts = async() => {
             try{
-                const res = await fetch("http://127.0.0.1:5000/api/products/");
+                const res = await fetch(`${API_BASE}/api/products`);
                 const data = await res.json();
                 setProducts(data);
             } catch (error){
